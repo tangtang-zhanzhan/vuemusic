@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <section>
+            <!-- 头部开始 -->
+            <section class="header">
+                <section class="header-left">
+                    <h3>蘑菇音乐屋</h3>
+                </section>
+                <section class="header-right">
+                    <input type="text" v-model="msg" @keyup.enter="toolWords">
+                    <span @click="toolWords"></span>
+                </section>
+            </section>
+            <!-- 头部结束 -->
+            <!-- 内容开始 -->
+            <section class="content">
+                <section class="content-left">
+                    <ul>
+                        <li v-for="item,index in tooldata" :key="item.id">
+                            <span class="pt" @click="mplay(item.id)"><i></i></span>
+                            <p>{{item.name}}</p>
+                            <span class="mt" @click="vplay(item.mvid,index)" v-if="item.mvid>0"><i></i></span>
+                        </li>
+                    </ul>
+                </section>
+                <section class="content-cont">
+                    <section :class="['play-dar',{rato:ismuic}]">
+                        <img src="http://linweiqin.cn/musicplayer/imgs/player_bar.png" alt="">
+                    </section>
+                    <section :class="['plty-dar',{plate:ismuic}]">
+                        <img src="http://linweiqin.cn/musicplayer/imgs/disc.png" alt=""></section>
+                    <section :class="['plcy-dar',{tupian:ismuic}]">
+                        <img :src="imgs" alt="">
+                    </section>
+                </section>
+                <section class="content-right">
+                    <h4>热门留言</h4>
+                    <ul>
+                        <li v-for="item in tops" :key="item.commentId">
+                            <img :src="item.user.avatarUrl" alt="">
+                            <p>
+                                <b>{{item.user.nickname}}</b>
+                                <span>{{item.content}}</span>
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+            <!-- 内容结束 -->
+            <!-- 底部开始 -->
+            <section class="foot">
+                <audio ref="maut" :src="pmu" controls loop autoplay v-if="!isShow" @pause="audioPause">
+                </audio>
+                <div class="video-box" v-if="isShow">
+                    <div class="video-close" @click="close">X</div>
+                    <video :src="vurl" ref="video" controls autoplay loop></video>
+                    <div class="video-mask"></div>
+                </div>
+            </section>
+            <!-- 底部结束 -->
+        </section>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="node_modules/axios/dist/axios.js"></script>
+<script src="index.js"></script>
+
+</html>

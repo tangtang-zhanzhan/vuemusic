@@ -1,0 +1,264 @@
+@mixin fle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+@keyframes zhuan {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+body,
+html,
+section,
+div,
+input,
+img,
+ul,
+li {
+    margin: 0px;
+    padding: 0px;
+}
+li {
+    list-style: none;
+}
+img {
+    display: block;
+}
+body {
+    width: 100%;
+    height: 100%;
+    background: url("http://linweiqin.cn/musicplayer/imgs/bg1.jpeg") no-repeat 0px 0px/100% 200%;
+}
+div#app {
+    box-sizing: border-box;
+    > section {
+        width: 800px;
+        height: 600px;
+        margin: 100px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        section.header {
+            padding: 0px 5px;
+            height: 60px;
+            background: #1baad5;
+            @include fle;
+            section.header-left {
+                h3 {
+                    font-weight: 500;
+                    color: #fff;
+                    font-size: 18px;
+                }
+            }
+            section.header-right {
+                @include fle;
+                overflow: hidden;
+                width: 300px;
+                height: 33px;
+                border-radius: 33px;
+                background: #fff;
+                input {
+                    width: 265px;
+                    height: 33px;
+                    text-indent: 20px;
+                    border: none;
+                    outline: none;
+                }
+                span {
+                    width: 35px;
+                    height: 33px;
+                    background: url("http://linweiqin.cn/musicplayer/imgs/zoom.png") no-repeat 4px 7px;
+                }
+            }
+        }
+        section.content {
+            flex: 1;
+            height: 485px;
+            background: rgba(255, 255, 255, 0.5);
+            @include fle;
+            section.content-left {
+                width: 200px;
+                height: 485px;
+                > ul {
+                    height: 485px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    li {
+                        @include fle;
+                        justify-content: start;
+                        width: 200px;
+                        height: 40px;
+                        line-height: 40px;
+                        color: #fff;
+                        span {
+                            width: 40px;
+                            height: 40px;
+                            i {
+                                display: block;
+                                width: 40px;
+                                height: 40px;
+                            }
+                        }
+                        .pt i {
+                            background: url("http://linweiqin.cn/musicplayer/imgs/table.png") no-repeat -25px -31px/122px
+                                100px;
+                        }
+                        .mt i {
+                            background: url("http://linweiqin.cn/musicplayer/imgs/table.png") no-repeat -47px -67px/122px
+                                100px;
+                        }
+                        > p {
+                            flex: 1;
+                            max-width: 110px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            text-align: center;
+                        }
+                    }
+                    li:nth-child(2n-1) {
+                        background: rgba(224, 217, 217, 0.5);
+                    }
+                }
+            }
+            section.content-cont {
+                position: relative;
+                width: 400px;
+                border-right: 1px dotted var(--themeColor);
+                position: relative;
+                height: 100%;
+                section.rato {
+                    transform: rotate(0deg) !important;
+                }
+                .play-dar {
+                    position: absolute;
+                    left: 200px;
+                    z-index: 8;
+                    transform: rotate(-25deg);
+                    transform-origin: 12px 12px;
+                    transition: all 2s;
+                }
+                section.plate {
+                    animation: zhuan 2s linear infinite;
+                }
+                section.tupian {
+                    animation: zhuan 2s linear infinite;
+                }
+                .plty-dar {
+                    
+                    overflow: hidden;
+                    top: 100px;
+                    left:100px;
+                    position: absolute;
+                    z-index: 3;
+                    img{
+                        width: 254px;
+                        height: 255px;
+                    }
+                }
+                .plcy-dar{
+                    position: absolute;
+                    top: 156px;
+                    left: 156px;
+                    img {
+                        width: 150px;
+                        height: 150px;
+                    }
+                }
+            }
+            section.content-right {
+                width: 185px;
+                border-left: 1px dotted var(--themeColor);
+                @include fle;
+                flex-direction: column;
+                justify-content: space-between;
+                position: relative;
+                h4 {
+                    width: 185px;
+                    font-weight: 500;
+                    font-size: 20px;
+                    height: 32px;
+                    text-align: start;
+                    position: fixed;
+                    top: 133px;
+                    z-index: 2;
+                }
+                ul {
+                    height: 453px;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    position: absolute;
+                    top: -210px;
+                    li {
+                        padding: 5px;
+                        display: flex;
+                        align-items: flex-start;
+                        img {
+                            height: 30px;
+                            width: 30px;
+                            border-radius: 50%;
+                        }
+                        > p {
+                            margin: 0;
+                            padding-left: 10px;
+                            b {
+                                display: block;
+                                font-size: 16px;
+                                font-weight: 500;
+                                color: #000;
+                            }
+                            span {
+                                display: block;
+                                font-size: 12px;
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        section.foot {
+            height: 60px;
+            width: 100%;
+            background-color: white;
+            audio {
+                width: 100%;
+                height: 100%;
+            }
+            .video-box {
+                position: relative;
+                .video-close {
+                    position: fixed;
+                    color: white;
+                    top: 10px;
+                    right: 10px;
+                    z-index: 1000;
+                }
+                video {
+                    transform: translate(-50%, -50%);
+                    left: 50%;
+                    height: 800px;
+                    width: 600px;
+                    position: fixed;
+                    z-index: 999;
+                    top: 50%;
+                }
+                .video-mask {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    opacity: 1;
+                    background-color: black;
+                    z-index: 888;
+                }
+            }
+        }
+    }
+}
